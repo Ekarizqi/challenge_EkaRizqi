@@ -9,13 +9,13 @@ function checkEmail(email){
         return "INVALID"
     }
     else if(typeof(email) == "number"){
-        return "Error: Type data berupa number"
+        return "Error: Data type not a string"
     }
     else if(email == null){
-        return "Error: Parameter kosong"
+        return "Error: Params can't be null"
     }
     else{
-        return "Error: Email yang dimasukkan tidak sesuai"
+        return "Error: Email is Invalid"
     }
 }
 

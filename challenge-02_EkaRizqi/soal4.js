@@ -7,7 +7,7 @@ function isValidPassword(givenPassword){
         return true;
     }
     else if(givenPassword == null){
-        return "Error: Parameter kosong"
+        return "Error:Params can't be null"
     }
     else{
         return false;
