@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
+</head>
+<body>
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="container">
+        <h3><b> Add New Car</b></h3>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                      <label class="form-label">Nama</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Harga</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    <div class="mb-3">
+                        <label class="form-label">Foto</label>
+                        <input type="file" class="form-control" placeholder="&#xF603;" style="font-family:Arial, FontAwesome">
+                        <div class="form-text">File size max 2mb.</div>
+                      </div>
+                    <label>Start Rent</label><br>
+                    <label>Finish Rent</label><br>
+                    <label>Created at</label><br>
+                    <label>Updated at</label><br>
+                </form>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</main>
+
+</body>
+</html>
