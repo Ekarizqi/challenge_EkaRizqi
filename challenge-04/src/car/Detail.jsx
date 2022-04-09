@@ -1,10 +1,14 @@
 import React from 'react'
 import {Row, Card, CardBody, CardTitle, CardSubtitle,CardText, CardImg, Button, Container} from 'reactstrap'
+import { useParams } from 'react-router-dom';
 
 
-export default function Detail ({data}) {
+export default function Detail ({detail}) {
+    let params = useParams();
+    // let detail = (parseInt(params.DetailId, 10));
     return (
         <div>
+            Detail: {params.DetailId}
             <Container><Row>
              <Card>
                 <CardBody>
@@ -52,8 +56,8 @@ export default function Detail ({data}) {
                 </Button>
                 </CardBody>
             </Card>
-            {/* {data.map((car, id) => (
-                 <Card key={id}>
+                {detail.map((car) => (
+                 <Card>
                      <CardBody>
                      <CardImg
                         alt="Card image cap"
@@ -71,15 +75,15 @@ export default function Detail ({data}) {
                          Some quick example text to build on the card title and make up the bulk of the card's content.
                      </CardText>
                      <CardText>
-                        created at: {car.createdAt}
+                        Manual
                      </CardText>
                      <Button block color="success"
                      href="#">
-                         Pilih Mobil
+                         Lanjutkan Pembayaran
                      </Button>
                      </CardBody>
                  </Card>
-            ))} */}
+                ))}
             </Row></Container>
         </div>
     );

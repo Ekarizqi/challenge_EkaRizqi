@@ -1,7 +1,9 @@
 import React from 'react'
 import {Form, FormGroup, Label, Input, Row, Card, CardBody, CardTitle, CardImg,CardText, Button, Container} from 'reactstrap'
+import {Link, Outlet} from 'react-router-dom'
 
-export default function ListCari ({data}) {
+
+export default function ListCari ({data, handleSearch}) {
 
     return(
         <div>
@@ -14,15 +16,16 @@ export default function ListCari ({data}) {
                Tipe Driver
               </Label>
               <Input
-                id="exampleSelect"
+                id={data.status}
                 name="select"
                 type="select"
+                onChange={(event) => handleSearch(event)}
               >
                 <option>
-                  1
+                  true
                 </option>
                 <option>
-                  2
+                  false
                 </option>
               </Input>
             </FormGroup>
@@ -53,9 +56,11 @@ export default function ListCari ({data}) {
           </Card>
           <Container style={{padding:"20px"}}>
           <Row xs="3">
-            {data.map((car, id) => (
-                 <Card key={id}>
+            {data.map((car, index) => (
+                 <Card >
                      <CardBody>
+                     <Link to={`/DetailId/${car.id}`}
+                     key={car.id}>
                      <CardImg
                         alt="Card image cap"
                         src={car.image}
@@ -72,17 +77,19 @@ export default function ListCari ({data}) {
                          Some quick example text to build on the card title and make up the bulk of the card's content.
                      </CardText>
                      <CardText>
-                        created at: {car.createdAt}
+                        Manual
                      </CardText>
-                     <Button block color="success"
-                     href="#">
-                         Pilih Mobil
-                     </Button>
+                      <Button block color="success"
+                      >
+                          Pilih Mobil
+                      </Button>
+                     </Link>
                      </CardBody>
                  </Card>
             ))}
           </Row>
           </Container>
+          <Outlet/>
         </div>
     )
 }
