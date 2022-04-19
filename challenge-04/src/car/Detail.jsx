@@ -1,14 +1,25 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react';
 import {Row, Card, CardBody, CardTitle, CardSubtitle,CardText, CardImg, Button, Container} from 'reactstrap'
 import { useParams } from 'react-router-dom';
+import axios from 'axios'
 
+export default function Detail () {
+    const {DetailId} = useParams();
 
-export default function Detail ({detail}) {
-    let params = useParams();
-    // let detail = (parseInt(params.DetailId, 10));
+    const [car, setCar] = useState();
+    
+    const getCar = async () => {
+      const response = await  axios.get(`https://rent-cars-api.herokuapp.com/customer/car/${DetailId}`);
+      const data = await response.data;
+      setCar(data);
+    };
+    
+    useEffect(() =>{
+      getCar();
+    });    
+
     return (
         <div>
-            Detail: {params.DetailId}
             <Container><Row>
              <Card>
                 <CardBody>
@@ -56,20 +67,19 @@ export default function Detail ({detail}) {
                 </Button>
                 </CardBody>
             </Card>
-                {detail.map((car) => (
                  <Card>
                      <CardBody>
                      <CardImg
                         alt="Card image cap"
-                        src={car.image}
+                        src={car?.image}
                         top
                         width="100%"
                       />
                      <CardTitle tag="h6">
-                        {car.name} / {car.category}
+                        {car.name} / {car?.category}
                      </CardTitle>
                      <CardTitle tag="h5">
-                        Rp {car.price} / hari 
+                        Rp {car?.price} / hari 
                      </CardTitle>
                      <CardText>
                          Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -83,7 +93,6 @@ export default function Detail ({detail}) {
                      </Button>
                      </CardBody>
                  </Card>
-                ))}
             </Row></Container>
         </div>
     );

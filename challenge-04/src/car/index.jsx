@@ -10,28 +10,7 @@ export default function CarComponent(props){
 
   const [cars, setCars] = useState([])
 
-  const [filter, setFilter] = useState(cars);
-  const handleSearch = (event) =>{
-    let car = event.target.cars.toLowerCase();
-    let result = [];
-    console.log(car);
-
-    result= cars.filter((data) =>{
-      return data.status(cars) === car.status
-    });
-    setFilter(result);
-  }
-
-  const getFilterData = async () => {
-    try {
-      const response = await  axios.get(`https://rent-cars-api.herokuapp.com/customer/car`);
-      const data = await response.data;
-      setFilter(data);
-    } catch(e){
-      console.log(e.message);
-    }
-  }
-  const getCar = async () => {
+  const getCars = async () => {
     try {
       const response = await  axios.get(`https://rent-cars-api.herokuapp.com/customer/car`);
       const data = await response.data;
@@ -42,22 +21,34 @@ export default function CarComponent(props){
   }
 
   useEffect(() =>{
-    getCar();
-    getFilterData();
+    getCars();
   }, [])
 
  console.log(cars)
   
- const getDetail = async (id) => {
-   await axios.get(`https://rent-cars-api.herokuapp.com/customer/car/${id}`);
-   const DetailId = cars.filter((item) => item.id === id);
-   setCars(DetailId);
- };
+ const [filtered, setFiltered] = useState([]);
+//  const [status, setStatus] = useState("");
 
- useEffect(() =>{
-   getDetail();
- })
- 
+ useEffect(() => {
+   async function getFiltered() {
+     const request = await axios.get (`https://rent-cars-api.herokuapp.com/customer/car`);
+     const response = await request;
+     setFiltered(response.data)
+   }
+   getFiltered();
+ }, [])
+
+  const handleSearch = (event) =>{
+    let car = event.target.filtered.toLowerCase();
+    let result = [];
+    console.log(car);
+
+    result= filtered.filter((data) =>{
+      return data.status(filtered) === car.status
+    });
+    setFiltered(result);
+  }
+
 
   return (
       <div>
@@ -66,8 +57,8 @@ export default function CarComponent(props){
 
            <Route path='/' 
             element={<Cari/>}/>  
-          <Route path='ListCari' element={<ListCari handleSearch={handleSearch} data={cars}/>}/>
-          <Route path=':DetailId' element={<Detail detail={getDetail}/>}/>
+          <Route path='/ListCari' element={<ListCari handleSearch={handleSearch} data={cars}/>}/>
+          <Route path='/ListCari/:DetailId' element={<Detail/>}/>
           <Route
             path="*"
             element={

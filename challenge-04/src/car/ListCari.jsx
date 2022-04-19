@@ -3,6 +3,7 @@ import {Form, FormGroup, Label, Input, Row, Card, CardBody, CardTitle, CardImg,C
 import {Link, Outlet} from 'react-router-dom'
 
 
+
 export default function ListCari ({data, handleSearch}) {
 
     return(
@@ -21,10 +22,10 @@ export default function ListCari ({data, handleSearch}) {
                 type="select"
                 onChange={(event) => handleSearch(event)}
               >
-                <option>
+                <option value="true">
                   true
                 </option>
-                <option>
+                <option value="false">
                   false
                 </option>
               </Input>
@@ -51,15 +52,18 @@ export default function ListCari ({data, handleSearch}) {
                 type="date"
               />
             </FormGroup>
+            <Button onClick={() => handleSearch()}>
+              Cari Mobil
+            </Button>
             </Row>
           </Form>
           </Card>
           <Container style={{padding:"20px"}}>
           <Row xs="3">
-            {data.map((car, index) => (
+            {data.map((car) => (
                  <Card >
                      <CardBody>
-                     <Link to={`/DetailId/${car.id}`}
+                     <Link to={`/ListCari/${car.id}`}
                      key={car.id}>
                      <CardImg
                         alt="Card image cap"
