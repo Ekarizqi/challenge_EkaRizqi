@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import {setProducts, fetchProducts} from "../redux/actions/productActions";
 import ProductComponent from "./ProductComponent";
+import Search from "./Search";
 
 const ProductListing = () => {
     const products = useSelector((state) => state);

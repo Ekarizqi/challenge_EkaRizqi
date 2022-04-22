@@ -1,11 +1,11 @@
 import React from "react";
 // import {Jumbotron} from "reactstrap";
-import {Container, Col, Row, Card} from "reactstrap";
+import {Container, Col, Row} from "reactstrap";
 import car from "../img/car.png";
 import "./cari.css";
 
 
-export default function Cari  ({id}) {
+export default function BannerHome  () {
     return (
         <div>
             <Container style={{backgroundColor:"#F1F3FF"}}
@@ -20,11 +20,6 @@ export default function Cari  ({id}) {
                         <img src={car} alt="car"/>
                     </div>
                 </Col>
-                </Row>
-                <Row>
-                    <Card>
-
-                    </Card>
                 </Row>
             </Container>
         </div>

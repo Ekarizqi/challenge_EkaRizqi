@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { 
     Card, CardBody, CardTitle, CardImg,CardText, Button,
 } from 'reactstrap'
+import user from "../img/fi_users.png";
+import calendar from "../img/fi_calendar.png";
+import settings from "../img/fi_settings.png";
 
 const ProductComponent = () => {
     const products = useSelector((state) => state.allProducts.products);
@@ -15,8 +18,8 @@ const ProductComponent = () => {
                 width:"405px",
                 height:"580px"
             }}>
-                     <CardBody>
-                     <CardImg
+                <CardBody>
+                    <CardImg
                         alt="Card image cap"
                         src={product.image}
                         top
@@ -24,32 +27,35 @@ const ProductComponent = () => {
                         height="200px"
                         style={{marginBottom:"20px"}}
                       />
-                     <CardTitle tag="h6">
+                    <CardTitle tag="h6">
                         {product.name} / {product.category}
-                     </CardTitle>
-                     <CardTitle tag="h5">
+                    </CardTitle>
+                    <CardTitle tag="h5">
                         Rp{product.price}/ hari 
-                     </CardTitle>
-                     <CardText>
+                    </CardTitle>
+                    <CardText>
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                     </CardText>
-                     <CardText>
-                        4 Orang
-                     </CardText>
-                     <CardText>
-                        Manual
-                     </CardText>
-                     <CardText>
-                        Tahun 2020
-                     </CardText>
-                     <Link to={`product/${product.id}`} >
+                    </CardText>
+                    <CardText >
+                        <img src={user} alt=''/>  
+                         4 Orang
+                    </CardText>
+                    <CardText>
+                        <img src={settings} alt=''/>
+                         Manual
+                    </CardText>
+                    <CardText>
+                        <img src={calendar} alt=''/>
+                         Tahun 2020
+                    </CardText>
+                    <Link to={`product/${product.id}`} >
                         <Button block color="success"
                         >
                             Pilih Mobil
                         </Button>
-                      </Link>
-                     </CardBody>
-                 </Card>
+                    </Link>
+                </CardBody>
+            </Card>
         );
     });
     // const {id, title} = products[0];
