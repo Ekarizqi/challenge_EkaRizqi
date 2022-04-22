@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {
     Row,Col, Card, CardBody, CardTitle, CardSubtitle,CardText, CardImg, Button, Container
 } from 'reactstrap'
 import {
-    selectedProducts, removeSelectedProducts,
+    fetchProductDetail, removeSelectedProducts,
 } from "../redux/actions/productActions";
-import user from "../img/fi_users.png";
-import calendar from "../img/fi_calendar.png";
-import settings from "../img/fi_settings.png";
+import {FiUsers, FiSettings} from 'react-icons/fi'
+import {AiOutlineCalendar} from 'react-icons/ai'
+// import user from "../img/fi_users.png";
+// import calendar from "../img/fi_calendar.png";
+// import settings from "../img/fi_settings.png";
+import Banner from '../car/Banner';
 
 const ProductDetail = () => {
     const product = useSelector((state) => state.product);
@@ -18,7 +21,7 @@ const ProductDetail = () => {
     const dispatch = useDispatch();
     console.log(productId);
 
-    const fetchProductDetail = async () => {
+    /* const fetchProductDetail = async () => {
         const response = await axios
         .get(`https://rent-cars-api.herokuapp.com/customer/car/${productId}`)
         .catch((err) => {
@@ -27,20 +30,21 @@ const ProductDetail = () => {
 
         dispatch(selectedProducts(response.data));
     };
-
+ */
     useEffect(() =>{
-        if (productId && productId !== "") fetchProductDetail();
+        if (productId && productId !== "") dispatch(fetchProductDetail(productId));
         return () => {
             dispatch(removeSelectedProducts());
         }
-    }, [productId]);
+    }, []);
 
     return (
-        <div className="container" >
+        <div >
+            <Banner />
             {Object.keys(product).length === 0 ? (
                 <div>...Loading</div>
             ): (
-                <Container><Row>
+                <Container style={{marginTop:"70px", padding:"10px"}}><Row>
                     <Col>
                         <Card style={{
                             marginRight:"20px",
@@ -102,28 +106,22 @@ const ProductDetail = () => {
                                 width="270px"
                                 height="200px"
                             />
-                            <CardTitle tag="h6">
+                            <CardTitle tag="h6" style={{marginTop:"15px"}}>
                                 {product.name} / {product.category}
                             </CardTitle>
-                            <CardTitle tag="h5"> Total
-                                Rp{product.price}/ hari 
-                            </CardTitle>
-                            <Row>
-                                <Col>
-                                    <CardText >
-                                    <img src={user} alt=''/>  
-                                    4 Orang
+                            <Row style={{paddingBottom:"10px", marginBottom:"30px"}}>
+                                    <CardText style={{fontSize:"12px"}}>
+                                        <FiUsers/> 4 Orang
+                                        <FiSettings/> Manual
+                                        <AiOutlineCalendar/> Tahun 2020
                                     </CardText>
-                                    <CardText>
-                                        <img src={settings} alt=''/>
-                                        Manual
-                                    </CardText>
-                                    <CardText>
-                                        <img src={calendar} alt=''/>
-                                        Tahun 2020
-                                    </CardText>
-                                </Col>
                             </Row>
+                            <CardTitle style={{fontSize:"14px", fontWeight:"bold"}}>
+                                <Row> 
+                                    <Col>Total</Col>
+                                    <Col>Rp{product.price}/ hari </Col>
+                                </Row>
+                            </CardTitle>
                                 <Button block color="success">
                                     Lanjutkan pembayaran
                                 </Button>

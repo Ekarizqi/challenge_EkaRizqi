@@ -4,16 +4,6 @@ import {
 
 
 export default function Search() {
-    // const [userData, setUserData] = useState([]);
-  
-    // React.useEffect(({ item }) => {
-    //   const Data = [{ item }];
-    //   setUserData(Data);
-    // });
-  
-    // const handleSearch = () => {
-    //   const newData = userData.filter(y => y.)
-    // };
   
     return (
       <div className="Search" boxShadow={4} style={{ display: "flex", position: "relative", justifyContent: "center", boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.15)" }}>
