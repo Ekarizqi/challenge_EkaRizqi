@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import Header from "./LandingPage/Header";
-import { Redirect } from "react-router-dom";
+import Form from "./LandingPage/Search"
+
 
 const BoardUser = () => {
   const [content, setContent] = useState("");
@@ -37,6 +38,7 @@ const BoardUser = () => {
         <>
         <h3>{content}</h3>
         <Header />
+        <Form />
         </>
       ):(
         <h1>Error</h1>

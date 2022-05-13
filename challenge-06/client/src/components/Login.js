@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 
@@ -42,6 +42,10 @@ const Login = (props) => {
   const { isLoggedIn } = useSelector(state => state.auth);
   const { message } = useSelector(state => state.message);
 
+  const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+
   const dispatch = useDispatch(); //Dia akan memantik action untuk mengakses global store dan atau api endpoint
 
   const onChangeUsername = (e) => {
@@ -84,9 +88,19 @@ const Login = (props) => {
     }
   };
 
-  if (isLoggedIn) {
-    return <Redirect to="/profile" />;
-  }
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     if (currentUser){
+  //       setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
+  //     }
+  //     return <Redirect to="/user" />;
+  //   }
+  // })
+
+  // if (isLoggedIn){
+  //   return <Redirect to="/user" />;
+  // }
+  
 
   //Sebagai contoh
   const message2 = "Ini ujicoba notifikasi"
@@ -97,12 +111,12 @@ const Login = (props) => {
         <img src={banner} alt="Banner-login" />
       </div>
       <div className="col-md-4">
-        <div className="card card-container">
-          <img
+        <div className="container">
+          {/* <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
             className="profile-img-card"
-          />
+          /> */}
 
           {/* Task 3. Menemukan fungsi yang memantik username dan password di proses, fokus handleLogin() */}
           <Form onSubmit={handleLogin} ref={form}>

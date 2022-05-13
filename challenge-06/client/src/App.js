@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Router, Switch, Route, Link } from "react-router-dom";
+import { Router, Switch, Route, Link, Redirect } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -14,6 +14,7 @@ import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
+
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -133,7 +134,9 @@ const App = () => {
           </div>
           
         </nav>
-
+  {showAdminBoard?(
+     <Redirect to="/admin" />
+  ):<Redirect to="/user" />}
         <div className="container mt-3" style={{padding: "0px"}}>
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
