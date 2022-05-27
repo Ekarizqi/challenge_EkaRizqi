@@ -10,6 +10,8 @@ export const fetchProducts = () => async (dispatch) => {
         });
     };
 
+    
+
     export const fetchProductDetail = (id) => async (dispatch) => {
         const response = await carApi.get(`/car/${id}`); 
 

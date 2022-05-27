@@ -74,6 +74,26 @@ const App = () => {
                 Home
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/home"} className="nav-link">
+                Our Services
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/home"} className="nav-link">
+                Why Us
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/home"} className="nav-link">
+                Testimonial
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/home"} className="nav-link">
+                FAQ
+              </Link>
+            </li>
 
             {showModeratorBoard && (
               <li className="nav-item">
@@ -135,9 +155,7 @@ const App = () => {
           </div>
           
         </nav>
-  {showAdminBoard?(
-     <Redirect to="/admin" />
-  ):<Redirect to="/user" />}
+
         <div className="container mt-3" style={{padding: "0px"}}>
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
@@ -161,5 +179,9 @@ const App = () => {
     </Router>
   );
 };
+
+
+
+
 
 export default App;

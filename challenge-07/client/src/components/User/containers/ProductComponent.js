@@ -10,8 +10,8 @@ import calendar from "../../../assets/fi_calendar.png";
 import settings from "../../../assets/fi_settings.png";
 
 const ProductComponent = () => {
-    const products = useSelector((state) => state.allProducts.products);
-    const renderList = products.map((product) => {
+    const products = useSelector((state)=> state.allProducts.products);
+    const renderList = products.map ((product) => {
         // const {id, name, category, price, image} = products;
         return (
             <Card key={product.id} style={{

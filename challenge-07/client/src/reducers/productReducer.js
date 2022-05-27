@@ -1,4 +1,4 @@
-import {ActionTypes} from "../contants/action-types";
+import {ActionTypes} from "../components/User/redux/contants/action-types";
 
 const initialState ={
     products: [],

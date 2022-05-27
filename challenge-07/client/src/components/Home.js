@@ -4,6 +4,7 @@ import UserService from "../services/user.service";
 import HeaderUser from "./LandingPage/Header";
 import OurServices from "./LandingPage/OurServices";
 import WhyUs from "./LandingPage/WhyUs";
+import Chart from "./LandingPage/Chart";
 
 const Home = () => {
   const [content, setContent] = useState("");
@@ -31,6 +32,7 @@ const Home = () => {
       <HeaderUser />
       <OurServices />
       <WhyUs />
+      <Chart />
     </div>
   );
 };
