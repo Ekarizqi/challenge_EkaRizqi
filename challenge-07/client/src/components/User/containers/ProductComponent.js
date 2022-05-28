@@ -49,7 +49,7 @@ const ProductComponent = () => {
                         <img src={calendar} alt=''/>
                          Tahun 2020
                     </CardText>
-                    <Link to={`product/${product.id}`} >
+                    <Link to={`/product/${product.id}`} >
                         <Button block color="success"
                         >
                             Pilih Mobil

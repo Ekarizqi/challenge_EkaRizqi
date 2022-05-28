@@ -8,8 +8,11 @@ import {
 import {
     fetchProductDetail, removeSelectedProducts,
 } from "../redux/actions/productActions";
-import {FiUsers, FiSettings} from 'react-icons/fi'
-import {AiOutlineCalendar} from 'react-icons/ai'
+import {FiUsers, FiSettings} from 'react-icons/fi';
+import {AiOutlineCalendar} from 'react-icons/ai';
+import ModalImage from 'react-modal-image';
+
+
 
 const ProductDetail = () => {
     const product = useSelector((state) => state.product);
@@ -94,13 +97,17 @@ const ProductDetail = () => {
                         width:"405px",
                         height:"435px"}}>
                             <CardBody>
-                            <CardImg
+                            {/* <CardImg
                                 alt="Card image cap"
                                 src={product.image}
                                 top
                                 width="270px"
                                 height="200px"
-                            />
+                            /> */}
+                            <ModalImage 
+                                small={product.image}
+                                large={product.image}
+                             />
                             <CardTitle tag="h6" style={{marginTop:"15px"}}>
                                 {product.name} / {product.category}
                             </CardTitle>

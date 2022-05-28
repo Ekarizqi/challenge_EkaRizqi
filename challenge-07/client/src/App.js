@@ -169,7 +169,7 @@ const App = () => {
             <Route path="/mod" component={BoardModerator} />
             <Route path="/admin" component={BoardAdmin} />
             <Route path='/product' component={ProductListing} />
-            <Route path='/product/product/:productId' component={ProductDetail} />
+            <Route path='/product/:productId' component={ProductDetail} />
 
           </Switch>
         </div>
