@@ -16,6 +16,8 @@ import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import ProductListing from "./components/User/containers/ProductListing";
 import ProductDetail from "./components/User/containers/ProductDetail";
+import CarList from "./components/Admin/CarList";
+
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -170,6 +172,7 @@ const App = () => {
             <Route path="/admin" component={BoardAdmin} />
             <Route path='/product' component={ProductListing} />
             <Route path='/product/:productId' component={ProductDetail} />
+            <Route path='/listcar' component={CarList} />
 
           </Switch>
         </div>

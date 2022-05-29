@@ -1,11 +1,12 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
 import {FiTruck, FiHome} from "react-icons/fi";
-import { FaBars } from "react-icons/fa";
-import logo_s from "../../assets/logo-s";
-import logo_b from "../../assets/logo_b";
+import logo_s from "../../assets/logo-s.png";
+import logo_b from "../../assets/logo-b.png";
+import { Nav, Navbar, Form } from "reactstrap";
+import { FormControl, Button } from "react-bootstrap";
 
-export const Sidenav = () => {
+const Sidenav = () => {
     return (
         <div>
             <div className="container">
@@ -63,11 +64,11 @@ export const Sidenav = () => {
                                 />
                                 <Button variant="primary" className='btn-search'>Search</Button>
                             </Form>
-                            <img alt='' src={profil} className='logo-profil' />
+                            <img alt='profil'  className='logo-profil' />
                             <div className='akun-name'>
                                 Unis Badri
                             </div>
-                            <Fi />
+                            {/* <Fi /> */}
                         </Navbar.Collapse>
                     </div>
                 </div>
@@ -76,3 +77,4 @@ export const Sidenav = () => {
     );
 };
 
+export default Sidenav;

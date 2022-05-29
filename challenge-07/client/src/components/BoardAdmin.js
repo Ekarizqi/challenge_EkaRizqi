@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
-import Header from "./Sidebar/Header";
+import Sidenav from "./Sidenav/Sidenav";
+import CarList from "./Admin/CarList";
 
 const BoardAdmin = () => {
   const [content, setContent] = useState("");
@@ -35,11 +36,12 @@ const BoardAdmin = () => {
     <>
     {currentUser?(
       <div>
-        <Header/>
+        {/* <Sidenav/> */}
         <div className="">
           <header className="jumbotron">
             <h3>{content}</h3>
           </header>
+          <CarList />
         </div>
       </div>
     ):(
